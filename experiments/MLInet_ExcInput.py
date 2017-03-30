@@ -16,11 +16,11 @@ from brian import *
 
 import copy as COPY
 import sys
-sys.path.append('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/model_PKJ_MLI - Lennon et al., computneur2014')
+sys.path.append('../model_PKJ_MLI - Lennon et al., computneur2014')
 from MLI_PKJ_net import *
-sys.path.append('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project')
-from MLI_net_personal import *
-sys.path.append('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/MLI_net_personal')
+sys.path.append('./')
+from MLI_network-TOPALG import *
+sys.path.append('./MLI_net_personal')
 from connection import *
 from molecular_layer_geometric import *
 from sampling_samplingAnalysis import *
@@ -60,7 +60,7 @@ connect_mli_mli_personal(MLItable, S_transitive, syn_prob=0.19) # according to e
 S_transitive.w[:,:] = 'rand()*w_mli_mli'
 
 # save the genuine connectivity
-syn_dir = '/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Connectivity/RUN9/Transitive/Synapses/'
+syn_dir = './experiments_results/MLInet_ExcInput/Connectivity/RUN9/Transitive/Synapses/'
 save_synapses(S_transitive, 'origin', syn_dir)
 
 # Give the genuine connectivity (the one S_transitive already has it) to the second synapse
@@ -171,13 +171,13 @@ iterative_corrections_output = iterative_corrections(Niterations=10, Ncorrection
                                                      Dis120D=transitive_dis['120D'],
                                                      Dis120U=transitive_dis['120U'], Dis201=transitive_dis['201'], Dis210=transitive_dis['210'],
                                                      Dis300=transitive_dis['300'], 
-                                                     figsDirectory='/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Connectivity/RUN9/Transitive')
+                                                     figsDirectory='./experiments_results/MLInet_ExcInput/Connectivity/RUN9/Transitive')
 
 S_transitive = iterative_corrections_output[0]
 print("(iteration no (0 before the first correction), meanDiff) : ")
 print(iterative_corrections_output[1])
 # save the transitive connectivity
-syn_dir = '/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Connectivity/RUN9/Transitive/Synapses/'
+syn_dir = './experiments_results/MLInet_ExcInput/Connectivity/RUN9/Transitive/Synapses/'
 save_synapses(S_transitive, 'transitive', syn_dir)
 
 # untransitive
@@ -194,13 +194,13 @@ iterative_corrections_output = iterative_corrections(Niterations=10, Ncorrection
                                                      Dis120D=untransitive_dis['120D'],
                                                      Dis120U=untransitive_dis['120U'], Dis201=untransitive_dis['201'], Dis210=untransitive_dis['210'],
                                                      Dis300=untransitive_dis['300'], 
-                                                     figsDirectory='/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Connectivity/RUN9/Untransitive')
+                                                     figsDirectory='./experiments_results/MLInet_ExcInput/Connectivity/RUN9/Untransitive')
 
 S_untransitive = iterative_corrections_output[0]
 print("(iteration no (0 before the first correction), meanDiff) : ")
 print(iterative_corrections_output[1])
 # save the untransitive connectivity
-syn_dir = '/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Connectivity/RUN9/Untransitive/Synapses/'
+syn_dir = './experiments_results/MLInet_ExcInput/Connectivity/RUN9/Untransitive/Synapses/'
 save_synapses(S_untransitive, 'untransitive', syn_dir)
 
 
@@ -270,7 +270,7 @@ print(time.time()-TIME_BEFORE_RUN, ' seconds of run - realtime.')
 
 # Plot raster plot
 rp = raster_plot(MS_MLI, newfigure=True)
-rp.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/rasterplot_transitive-connectivity_nostim.png',dpi=600*6.93/25)
+rp.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/rasterplot_transitive-connectivity_nostim.png',dpi=600*6.93/25)
 
 ind, mean_fr, isi_cv, err = find_closest_match_neuron(MS_MLI, 15., .40)
 
@@ -302,7 +302,7 @@ tick_params(labelsize=18)
 
 tight_layout()
 fig.subplots_adjust(wspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/autocorrelation_transitive-connectivity_nostim.png',
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/autocorrelation_transitive-connectivity_nostim.png',
     dpi=600*6.93/25)
 
 # Plotting functions/imports
@@ -344,7 +344,7 @@ try :
     
     tight_layout()
     fig.subplots_adjust(hspace=.3)
-    fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/population_rate_histograms_transitive-connectivity_nostim.png',
+    fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/population_rate_histograms_transitive-connectivity_nostim.png',
         dpi=600*3.35/6)
 except:
     pass
@@ -370,10 +370,10 @@ yticks(arange(0,10,2))
 
 tight_layout()
 fig.subplots_adjust(hspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/mean_firing_rate_transitive-connectivity_nostim.png',
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/mean_firing_rate_transitive-connectivity_nostim.png',
     dpi=600*3.35/6)
 data = hist(times, bins=np.arange(0,float(EXC_PARAMS[1]), bin_mfr), weights=np.ones(len(times))*(1./len(MLI))*(1./bin_mfr)*(1./(runtime/EXC_PARAMS[1])), color='#4b188c')
-trg=open('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/mean_firing_rate_transitive-connectivity_nostim.txt', 'w')
+trg=open('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitivenoStim/mean_firing_rate_transitive-connectivity_nostim.txt', 'w')
 trg.write(str(data))
 trg.close()
 
@@ -398,7 +398,7 @@ print(time.time()-TIME_BEFORE_RUN, ' seconds of run - realtime.')
 
 # Plot raster plot
 rp = raster_plot(MS_MLI, newfigure=True)
-rp.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/rasterplot_transitive-connectivity_stim.png',
+rp.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/rasterplot_transitive-connectivity_stim.png',
     dpi=600*6.93/25)
 
 ind, mean_fr, isi_cv, err = find_closest_match_neuron(MS_MLI, 15., .40)
@@ -433,7 +433,7 @@ tick_params(labelsize=18)
 
 tight_layout()
 fig.subplots_adjust(wspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/autocorrelation_transitive-connectivity_stim.png',
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/autocorrelation_transitive-connectivity_stim.png',
     dpi=600*6.93/25)
 
 # Plotting functions/imports
@@ -475,7 +475,7 @@ try :
     
     tight_layout()
     fig.subplots_adjust(hspace=.3)
-    fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/population_rate_histograms_transitive-connectivity_stim.png',
+    fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/population_rate_histograms_transitive-connectivity_stim.png',
         dpi=600*3.35/6)
 except:
     pass
@@ -501,9 +501,9 @@ yticks(arange(0,10,2))
 
 tight_layout()
 fig.subplots_adjust(hspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/mean_firing_rate_transitive-connectivity_stim.png',dpi=600*3.35/6)
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/mean_firing_rate_transitive-connectivity_stim.png',dpi=600*3.35/6)
 data = hist(times, bins=np.arange(0,float(EXC_PARAMS[1]), bin_mfr), weights=np.ones(len(times))*(1./len(MLI))*(1./bin_mfr)*(1./(runtime/EXC_PARAMS[1])), color='#4b188c')
-trg=open('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/mean_firing_rate_transitive-connectivity_stim.txt', 'w')
+trg=open('./experiments_results/MLInet_ExcInput/Activity/RUN9/transitiveStim/mean_firing_rate_transitive-connectivity_stim.txt', 'w')
 trg.write(str(data))
 trg.close()
 
@@ -526,7 +526,7 @@ print(time.time()-TIME_BEFORE_RUN, ' seconds of run - realtime.')
 
 # Plot raster plot
 rp = raster_plot(MS_MLI, newfigure=True)
-rp.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/rasterplot_untransitive-connectivity_nostim.png',
+rp.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/rasterplot_untransitive-connectivity_nostim.png',
     dpi=600*6.93/25)
 
 ind, mean_fr, isi_cv, err = find_closest_match_neuron(MS_MLI, 15., .40)
@@ -560,7 +560,7 @@ tick_params(labelsize=18)
 
 tight_layout()
 fig.subplots_adjust(wspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/autocorrelation_untransitive-connectivity_nostim.png',
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/autocorrelation_untransitive-connectivity_nostim.png',
     dpi=600*6.93/25)
 
 # Plotting functions/imports
@@ -602,7 +602,7 @@ try :
     
     tight_layout()
     fig.subplots_adjust(hspace=.3)
-    fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/population_rate_histograms_untransitive-connectivity_nostim.png',
+    fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/population_rate_histograms_untransitive-connectivity_nostim.png',
         dpi=600*3.35/6)
 except:
     pass
@@ -628,10 +628,10 @@ yticks(arange(0,10,2))
 
 tight_layout()
 fig.subplots_adjust(hspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/mean_firing_rate_untransitive-connectivity_nostim.png',
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/mean_firing_rate_untransitive-connectivity_nostim.png',
     dpi=600*3.35/6)
 data = hist(times, bins=np.arange(0,float(EXC_PARAMS[1]), bin_mfr), weights=np.ones(len(times))*(1./len(MLI))*(1./bin_mfr)*(1./(runtime/EXC_PARAMS[1])), color='#4b188c')
-trg=open('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/mean_firing_rate_untransitive-connectivity_nostim.txt', 'w')
+trg=open('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitivenoStim/mean_firing_rate_untransitive-connectivity_nostim.txt', 'w')
 trg.write(str(data))
 trg.close()
 
@@ -655,7 +655,7 @@ print(time.time()-TIME_BEFORE_RUN, ' seconds of run - realtime.')
 
 # Plot raster plot
 rp = raster_plot(MS_MLI, newfigure=True)
-rp.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/rasterplot_untransitive-connectivity_stim.png',
+rp.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/rasterplot_untransitive-connectivity_stim.png',
     dpi=600*6.93/25)
 
 ind, mean_fr, isi_cv, err = find_closest_match_neuron(MS_MLI, 15., .40)
@@ -690,7 +690,7 @@ tick_params(labelsize=18)
 
 tight_layout()
 fig.subplots_adjust(wspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/autocorrelation_untransitive-connectivity_stim.png',
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/autocorrelation_untransitive-connectivity_stim.png',
     dpi=600*6.93/25)
 
 # Plotting functions/imports
@@ -732,7 +732,7 @@ try :
 
     tight_layout()
     fig.subplots_adjust(hspace=.3)
-    fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/population_rate_histograms_untransitive-connectivity_stim.png',
+    fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/population_rate_histograms_untransitive-connectivity_stim.png',
         dpi=600*3.35/6)
 except:
     pass
@@ -758,10 +758,10 @@ yticks(arange(0,10,2))
 
 tight_layout()
 fig.subplots_adjust(hspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/mean_firing_rate_untransitive-connectivity_stim.png',
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/mean_firing_rate_untransitive-connectivity_stim.png',
     dpi=600*3.35/6)
 data = hist(times, bins=np.arange(0,float(EXC_PARAMS[1]), bin_mfr), weights=np.ones(len(times))*(1./len(MLI))*(1./bin_mfr)*(1./(runtime/EXC_PARAMS[1])), color='#4b188c')
-trg=open('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/mean_firing_rate_untransitive-connectivity_stim.txt', 'w')
+trg=open('./experiments_results/MLInet_ExcInput/Activity/RUN9/untransitiveStim/mean_firing_rate_untransitive-connectivity_stim.txt', 'w')
 trg.write(str(data))
 trg.close()
 
@@ -784,7 +784,7 @@ print(time.time()-TIME_BEFORE_RUN, ' seconds of run - realtime.')
 
 # Plot raster plot
 rp = raster_plot(MS_MLI, newfigure=True)
-rp.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/rasterplot_origin-connectivity_nostim.png',dpi=600*6.93/25)
+rp.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/rasterplot_origin-connectivity_nostim.png',dpi=600*6.93/25)
 
 ind, mean_fr, isi_cv, err = find_closest_match_neuron(MS_MLI, 15., .40)
 ind, mean_fr, isi_cv, err = find_closest_match_neuron(MS_MLI, 15., .40)
@@ -817,7 +817,7 @@ tick_params(labelsize=18)
 
 tight_layout()
 fig.subplots_adjust(wspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/autocorrelation_origin-connectivity_nostim.png',
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/autocorrelation_origin-connectivity_nostim.png',
     dpi=600*6.93/25)
 
 # Plotting functions/imports
@@ -859,7 +859,7 @@ try :
     
     tight_layout()
     fig.subplots_adjust(hspace=.3)
-    fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/population_rate_histograms_origin-connectivity_nostim.png',
+    fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/population_rate_histograms_origin-connectivity_nostim.png',
         dpi=600*3.35/6)
 except:
     pass
@@ -885,9 +885,9 @@ yticks(arange(0,10,2))
 
 tight_layout()
 fig.subplots_adjust(hspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/mean_firing_rate_origin-connectivity_nostim.png',dpi=600*3.35/6)
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/mean_firing_rate_origin-connectivity_nostim.png',dpi=600*3.35/6)
 data = hist(times, bins=np.arange(0,float(EXC_PARAMS[1]), bin_mfr), weights=np.ones(len(times))*(1./len(MLI))*(1./bin_mfr)*(1./(runtime/EXC_PARAMS[1])), color='#4b188c')
-trg=open('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/mean_firing_rate_origin-connectivity_nostim.txt', 'w')
+trg=open('./experiments_results/MLInet_ExcInput/Activity/RUN9/originnoStim/mean_firing_rate_origin-connectivity_nostim.txt', 'w')
 trg.write(str(data))
 trg.close()
 
@@ -911,7 +911,7 @@ print(time.time()-TIME_BEFORE_RUN, ' seconds of run - realtime.')
 
 # Plot raster plot
 rp = raster_plot(MS_MLI, newfigure=True)
-rp.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/rasterplot_origin-connectivity_stim.png',dpi=600*6.93/25)
+rp.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/rasterplot_origin-connectivity_stim.png',dpi=600*6.93/25)
 
 ind, mean_fr, isi_cv, err = find_closest_match_neuron(MS_MLI, 15., .40)
 
@@ -945,7 +945,7 @@ tick_params(labelsize=18)
 
 tight_layout()
 fig.subplots_adjust(wspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/autocorrelation_origin-connectivity_stim.png',dpi=600*6.93/25)
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/autocorrelation_origin-connectivity_stim.png',dpi=600*6.93/25)
 
 # Plotting functions/imports
 from scipy.stats import spearmanr
@@ -986,7 +986,7 @@ try :
     
     tight_layout()
     fig.subplots_adjust(hspace=.3)
-    fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/population_rate_histograms_origin-connectivity_stim.png',
+    fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/population_rate_histograms_origin-connectivity_stim.png',
         dpi=600*3.35/6)
 except:
     pass
@@ -1012,8 +1012,8 @@ yticks(arange(0,10,2))
 
 tight_layout()
 fig.subplots_adjust(hspace=.3)
-fig.savefig('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/mean_firing_rate_origin-connectivity_stim.png',dpi=600*3.35/6)
+fig.savefig('./experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/mean_firing_rate_origin-connectivity_stim.png',dpi=600*3.35/6)
 data = hist(times, bins=np.arange(0,float(EXC_PARAMS[1]), bin_mfr), weights=np.ones(len(times))*(1./len(MLI))*(1./bin_mfr)*(1./(runtime/EXC_PARAMS[1])), color='#4b188c')
-trg=open('/Users/maximebeau/Desktop/Science/4_Stage_UCL_WIBR_HAUSSER/My_project/experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/mean_firing_rate_origin-connectivity_stim.txt', 'w')
+trg=open('./experiments_results/MLInet_ExcInput/Activity/RUN9/originStim/mean_firing_rate_origin-connectivity_stim.txt', 'w')
 trg.write(str(data))
 trg.close()

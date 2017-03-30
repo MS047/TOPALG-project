@@ -1,4 +1,4 @@
-This code allows to generate a model network of 160 Molecular Layer Interneurons inspired from Lennon et al., and implemented in the BRIAN simulator (Stimberg et al., 2014), and to study the effects of its local topology on its dynamics through the use of TOPALG.
+This code allows to generate a model network of 160 Molecular Layer Interneurons inspired from Lennon et al., 2014 implemented in the BRIAN simulator (Stimberg et al., 2014), and to study the effects of its local topology on its dynamics through the use of TOPALG.
 
 TOPALG is an algorithm implemented in python 2.7, whose function is to push a neural networks triadic connectivity to converge towards a chosen distribution. It is designed to work with networks implemented in BRIAN. It has been written in 2016 by Maxime Beau and Arnd Roth.This repository contains publicly available code for experiments published in academic journals.
 
